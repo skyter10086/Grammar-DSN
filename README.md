@@ -8,6 +8,8 @@ SYNOPSIS
 
 ```raku
 use Grammar::DSN;
+say Grammar::DSN.parse('sqlite://@tk.db/');
+say Grammar::DSN.parse('MySQL://jhon:"s3cr@t"@localhost:3306/test');
 ```
 
 DESCRIPTION
