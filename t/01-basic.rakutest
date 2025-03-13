@@ -1,0 +1,32 @@
+use Test;
+use Grammar::DSN;
+
+plan 9;
+
+my $sqlite_dsn = 'sqlite://@tk.db/';
+
+my $mysql_dsn = 'mysql://john:"s3cr@t"@localhost:3306/test';
+
+
+ok Grammar::DSN.parse($sqlite_dsn).so, "测试sqlite_dsn是否匹配";
+
+ok Grammar::DSN.parse($mysql_dsn).so, "测试mysql_dsn是否匹配";
+
+ok Grammar::DSN.parse($sqlite_dsn)<host>.Str eq 'tk.db', "测试sqlite_dsn<host>是否正确";
+say Grammar::DSN.parse($sqlite_dsn)<host>.Str;
+
+ok Grammar::DSN.parse($sqlite_dsn)<driver>.Str.lc eq 'sqlite', "测试sqlite_dsn<driver>是否正确";
+say Grammar::DSN.parse($sqlite_dsn)<driver>.Str.lc;
+
+ok Grammar::DSN.parse($mysql_dsn)<user>.Str eq 'john', "测试mysql_dsn<user>是否正确";
+
+ok Grammar::DSN.parse($mysql_dsn)<password>.Str eq 's3cr@t', "测试mysql_dsn<password>是否正确";
+
+ok Grammar::DSN.parse($mysql_dsn)<host>.Str eq 'localhost', "测试<host>是否正确";
+
+ok Grammar::DSN.parse($mysql_dsn)<port>.Str eq '3306', "测试<port>是否正确";
+
+ok Grammar::DSN.parse($mysql_dsn)<database>.Str eq 'test', "测试<database>是否正确";
+
+
+done-testing;
