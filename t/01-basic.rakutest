@@ -3,7 +3,7 @@ use Grammar::DSN;
 
 plan 9;
 
-my $sqlite_dsn = 'sqlite://@tk.db/';
+my $sqlite_dsn = 'sqlite://tk.db/';
 
 my $mysql_dsn = 'mysql://john:"s3cr@t"@localhost:3306/test';
 
